@@ -9,5 +9,5 @@ console.log(minhaPrimeiraConstanteString);
 let leituraDeCampo;
 readline.question('Por favor digie alguma coisa:', input => {
     leituraDeCampo = input;
-console.log('o usuario digitou:', ${leituraDeCampor});
+console.log(`o usuario digitou: ${leituraDeCampo}`);
 });
