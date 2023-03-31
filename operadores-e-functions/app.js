@@ -1,4 +1,3 @@
-const { Console } = require('console');
 
 const readline = require('readline').createInterface({
     input: process.stdin,
