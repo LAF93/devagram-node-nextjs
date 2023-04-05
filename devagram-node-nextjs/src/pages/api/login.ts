@@ -4,14 +4,14 @@ import { RespostaPadraoMsg } from "../../../type/RespostaPadraoMsg";
 import { LoginResposta } from "../../../type/LoginResposta";
 import { UsuarioModel } from "../../../models/UsuarioModel";
 import md5 from "md5";
-import jwt from "jsonwebtoken"
+import jwt, { Secret } from "jsonwebtoken"
 
 const endpointLogin = async (
     req: NextApiRequest,
     res: NextApiResponse<RespostaPadraoMsg | LoginResposta>
 ) => {
 
-    const { MINHA_CHAVE_JWT } = process.env;
+    const {MINHA_CHAVE_JWT} = process.env;
     if (!MINHA_CHAVE_JWT) {
         res.status(500).json({ erro: 'ENV Jwt nao informada' });
     }
@@ -23,7 +23,7 @@ const endpointLogin = async (
         if (usuariosEncontrados && usuariosEncontrados.length > 0){
             const usuarioEncontrado = usuariosEncontrados[0];
 
-            const token = jwt.sign({_id : usuarioEncontrado._id}, MINHA_CHAVE_JWT);
+            const token = jwt.sign({_id : usuarioEncontrado._id}, MINHA_CHAVE_JWT as string);
             return res.status(200).json({
                 nome: usuarioEncontrado.nome,
                 email: usuarioEncontrado.email,
