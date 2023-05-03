@@ -4,7 +4,7 @@ import { validarTokenJWT } from "../../middlewares/validarTokenJWT";
 import { conectarMongoDB } from '../../middlewares/conectarMongoDB';
 import { UsuarioModel } from "@/models/UsuarioModel";
 
-const usurioEndpoint = async (req: NextApiRequest, res: NextApiResponse<RespostaPadraoMsg | any>) => {
+const usurioEndpoint = async (req: NextApiRequest, res : NextApiResponse<RespostaPadraoMsg | any>) => {
     
     try {
         const {userId} = req?.query;
