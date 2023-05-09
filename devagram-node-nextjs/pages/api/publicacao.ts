@@ -1,7 +1,8 @@
-import { RespostaPadraoMsg } from "../../types/RespostaPadraoMsg";
+import type { RespostaPadraoMsg } from "../../types/RespostaPadraoMsg";
 import { updload, uploadImagemCosmic } from "../../services/uploadImagemCosmic";
 import { conectarMongoDB } from '../../middlewares/conectarMongoDB';
 import { validarTokenJWT } from "../../middlewares/validarTokenJWT";
+import { politicaCORS } from "../../middlewares/politicaCORS";
 import { PublicacaoModel } from "../../models/PublicacaoModel";
 import { UsuarioModel } from "../../models/UsuarioModel";
 import type { NextApiResponse } from "next";
@@ -55,4 +56,4 @@ export const config = {
     }
 }
 
-export default validarTokenJWT(conectarMongoDB(handler));
+export default politicaCORS(validarTokenJWT(conectarMongoDB(handler)));

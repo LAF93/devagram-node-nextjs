@@ -1,7 +1,8 @@
-import { NextApiRequest, NextApiResponse } from "next";
-import { RespostaPadraoMsg } from "../../types/RespostaPadraoMsg";
+import type { NextApiRequest, NextApiResponse } from "next";
+import type { RespostaPadraoMsg } from "../../types/RespostaPadraoMsg";
 import { conectarMongoDB } from "../../middlewares/conectarMongoDB";
 import { validarTokenJWT } from "../../middlewares/validarTokenJWT";
+import { politicaCORS } from "../../middlewares/politicaCORS";
 import { PublicacaoModel } from "../../models/PublicacaoModel";
 import { UsuarioModel } from "../../models/UsuarioModel";
 
@@ -46,4 +47,4 @@ const likeEndpoint
     }
 }
 
-export default validarTokenJWT(conectarMongoDB(likeEndpoint));
+export default politicaCORS(validarTokenJWT(conectarMongoDB(likeEndpoint)));

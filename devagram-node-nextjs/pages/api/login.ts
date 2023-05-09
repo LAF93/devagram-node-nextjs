@@ -1,5 +1,6 @@
 import type { NextApiRequest, NextApiResponse } from "next";
 import { conectarMongoDB } from "../../middlewares/conectarMongoDB";
+import { politicaCORS } from "../../middlewares/politicaCORS";
 import { RespostaPadraoMsg } from "../../types/RespostaPadraoMsg";
 import { LoginResposta } from "../../types/LoginResposta";
 import { UsuarioModel } from "../../models/UsuarioModel";
@@ -35,4 +36,4 @@ const endpointLogin = async (
 }
 
 
-export default conectarMongoDB(endpointLogin);
+export default politicaCORS(conectarMongoDB(endpointLogin));

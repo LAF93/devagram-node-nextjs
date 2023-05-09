@@ -1,8 +1,9 @@
-import { NextApiRequest, NextApiResponse } from "next";
+import type { NextApiRequest, NextApiResponse } from "next";
 import type { RespostaPadraoMsg } from "../../types/RespostaPadraoMsg";
 import { validarTokenJWT } from "../../middlewares/validarTokenJWT";
 import { conectarMongoDB } from '../../middlewares/conectarMongoDB';
-import { UsuarioModel } from "@/models/UsuarioModel";
+import { politicaCORS } from "../../middlewares/politicaCORS";
+import { UsuarioModel } from "../../models/UsuarioModel";
 import { updload, uploadImagemCosmic } from '../../services/uploadImagemCosmic';
 import nc from 'next-connect';
 
@@ -59,4 +60,4 @@ export const config = {
     }
 }
 
-export default validarTokenJWT(conectarMongoDB(handler));
+export default politicaCORS(validarTokenJWT(conectarMongoDB(handler)));
