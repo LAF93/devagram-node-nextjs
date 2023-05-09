@@ -8,6 +8,7 @@ import { updload, uploadImagemCosmic } from "../../services/uploadImagemCosmic";
 import md5 from 'md5';
 import nc from 'next-connect';
 
+
 const handler = nc()
     .use(updload.single('file'))
     .post(async (req: NextApiRequest, res: NextApiResponse<RespostaPadraoMsg>) => {
